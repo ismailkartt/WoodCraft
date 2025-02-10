@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const slides = [
   {
@@ -21,6 +22,7 @@ const slides = [
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -57,7 +59,13 @@ export default function Hero() {
               <p className="text-xl md:text-2xl mb-8 transform transition-all duration-1000 translate-y-0 opacity-100">
                 {slide.description}
               </p>
-              <button className="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold flex items-center mx-auto hover:bg-gray-100 transition-colors">
+              <button 
+                onClick={() => navigate('/products')}
+                className="relative z-10 bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+                px-8 py-3 rounded-full font-semibold flex items-center mx-auto 
+                hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-gray-900 
+                hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
+              >
                 Koleksiyonu Keşfet
                 <ArrowRight className="ml-2" size={20} />
               </button>
